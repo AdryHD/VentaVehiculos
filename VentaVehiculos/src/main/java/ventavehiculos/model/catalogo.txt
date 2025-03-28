@@ -1,4 +1,0 @@
-1,Toyota,Corolla,18500.0,true
-2,Honda,Civic,19900.0,true
-3,Nissan,Versa,17000.0,true
-
