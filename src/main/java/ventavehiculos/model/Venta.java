@@ -1,6 +1,7 @@
 package ventavehiculos.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Venta {
     private int idVenta;
@@ -11,6 +12,7 @@ public class Venta {
 
     // Constructor
     public Venta(int idVenta, Cliente cliente, Vehiculo vehiculo, LocalDateTime fechaVenta) {
+       // List<Venta> ventas =
         this.idVenta = idVenta;
         this.cliente = cliente;
         this.vehiculo = vehiculo;

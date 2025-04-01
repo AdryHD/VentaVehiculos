@@ -39,11 +39,6 @@ public class VehiculoDAO {
 
             while (rs.next()) {
                 Vehiculo v = new Vehiculo(
-                        rs.getInt("id_vehiculo"),
-                        rs.getString("marca"),
-                        rs.getString("modelo"),
-                        rs.getDouble("precio"),
-                        rs.getBoolean("disponible")
                 );
                 lista.add(v);
             }
