@@ -73,7 +73,7 @@
         </constraints>
         <properties>
           <font name="Arial" size="16" style="1"/>
-          <text value="Inventario de Vehículos"/>
+          <text value="Vehículos Disponibles"/>
         </properties>
       </component>
     </children>

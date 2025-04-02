@@ -89,16 +89,16 @@ public class VentanaVentas extends JFrame {
         double precio = (double) modeloTabla.getValueAt(fila, 3);
 
         //  factura
-        areaFactura.setText("======= FACTURA SGV =======\n");
-        areaFactura.append("Cliente: " + nombre + " " + apellido + "\n");
-        areaFactura.append("Correo: " + correo + "\n");
-        areaFactura.append("Teléfono: " + telefono + "\n");
-        areaFactura.append("---------------------------\n");
+        areaFactura.setText( "\n" + "======= FACTURA SGV =======\n" + "\n");
+        areaFactura.append( nombre + " " + apellido + "\n");
+        areaFactura.append( correo + "\n");
+        areaFactura.append( telefono + "\n"+ "\n");
+        areaFactura.append("-------------------------------------\n"+ "\n");
         areaFactura.append("Vehículo: " + marca + " " + modelo + "\n");
         areaFactura.append("Precio: $" + precio + "\n");
-        areaFactura.append("Fecha: " + LocalDateTime.now() + "\n");
+        areaFactura.append("Fecha: " + LocalDateTime.now() + "\n" + "\n");
         areaFactura.append("===========================\n");
 
-        JOptionPane.showMessageDialog(this, "Venta registrada (simulada).");
+        JOptionPane.showMessageDialog(this, "Venta registrada.");
     }
 }

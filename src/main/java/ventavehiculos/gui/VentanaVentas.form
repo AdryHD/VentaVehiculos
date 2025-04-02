@@ -14,14 +14,16 @@
         </constraints>
         <properties>
           <font name="Arial" size="16" style="1"/>
-          <text value="-- Registro de Ventas --"/>
+          <text value="-- Lista de Vehículos Disponibles --"/>
         </properties>
       </component>
       <scrollpane id="39b7e">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <font style="1"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="d27e" class="javax.swing.JTable" binding="tablaVehiculos">
@@ -40,11 +42,13 @@
       </component>
       <component id="a9ade" class="javax.swing.JTextArea" binding="areaFactura">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="90"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Arial"/>
+        </properties>
       </component>
       <component id="88002" class="javax.swing.JButton" binding="btnCerrar">
         <constraints>

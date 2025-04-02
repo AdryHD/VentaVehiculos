@@ -104,15 +104,29 @@ public class VentanaInventario extends JFrame {
         int fila = tablaVehiculos.getSelectedRow();
         if (fila >= 0) {
             int id = (int) modeloTabla.getValueAt(fila, 0);
-            boolean eliminado = new VehiculoDAO().eliminarVehiculo(id);
-            if (eliminado) {
-                JOptionPane.showMessageDialog(this, "Vehículo eliminado.");
-                cargarVehiculos();
-            } else {
-                JOptionPane.showMessageDialog(this, "No se pudo eliminar.");
+            String marca = (String) modeloTabla.getValueAt(fila, 1);
+            String modelo = (String) modeloTabla.getValueAt(fila, 2);
+
+            int confirmacion = JOptionPane.showConfirmDialog(
+                    this,
+                    "¿Estás seguro de eliminar el vehículo: " + marca + " " + modelo + "?",
+                    "Confirmar eliminación",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                boolean eliminado = new VehiculoDAO().eliminarVehiculo(id);
+                if (eliminado) {
+                    JOptionPane.showMessageDialog(this, "Vehículo eliminado.");
+                    cargarVehiculos();
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se pudo eliminar.");
+                }
             }
         } else {
             JOptionPane.showMessageDialog(this, "Selecciona un vehículo para eliminar.");
         }
     }
+
 }
