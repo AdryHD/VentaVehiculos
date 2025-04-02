@@ -1,7 +1,9 @@
 package ventavehiculos.gui;
 
 import ventavehiculos.dao.VehiculoDAO;
+import ventavehiculos.model.Cliente;
 import ventavehiculos.model.Vehiculo;
+import ventavehiculos.model.Venta;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -99,6 +101,21 @@ public class VentanaVentas extends JFrame {
         areaFactura.append("Fecha: " + LocalDateTime.now() + "\n" + "\n");
         areaFactura.append("===========================\n");
 
-        JOptionPane.showMessageDialog(this, "Venta registrada.");
+        //Se busca el carro por id para obtener todos los detalles para la factura
+        Vehiculo vehiculoSeleccionado = new VehiculoDAO().buscarCarroPorId(idVehiculo);
+        if (vehiculoSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Error al recuperar detalles del vehiculo");
+            return;
+        }
+
+        // se obtiene la informacion del cliente para la factura
+        Cliente cliente = new Cliente(nombre, apellido, correo, telefono);
+
+        // se encapsula la transaccion y genera la factura
+        Venta nuevaVenta = new Venta(0, cliente, vehiculoSeleccionado, LocalDateTime.now());
+        nuevaVenta.setMonto(precio);
+        nuevaVenta.generarFactura();
+
+        JOptionPane.showMessageDialog(this, "Venta registrada y factura generada.");
     }
 }

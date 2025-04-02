@@ -1,6 +1,7 @@
 package ventavehiculos.gui;
 
 import ventavehiculos.dao.ConexionBD;
+import ventavehiculos.model.Usuario;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,13 +21,6 @@ public class VentanaLogin extends JFrame {
     public VentanaLogin() {
         setTitle("Inicio de Sesión - SGV");
         setContentPane(panelPrincipal);
-        //  icono  usuario
-        ImageIcon iconoUsuario = new ImageIcon(getClass().getResource("/icons/usuario.png"));
-        lblUsuario.setIcon(iconoUsuario);
-        ImageIcon iconoContraseña = new ImageIcon(getClass().getResource("/icons/contraseña.png"));
-        lblContraseña.setIcon(iconoContraseña);
-
-
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400, 300);
         setLocationRelativeTo(null);
@@ -61,7 +55,15 @@ public class VentanaLogin extends JFrame {
 
             if (rs.next()) {
                 String tipoUsuario = rs.getString("tipo_usuario");
+                String nombreUsuario = rs.getString("usuario");
                 String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String correo = rs.getString("correo");
+
+                Usuario usuarioOnline = new Usuario(nombre, apellido, correo, nombreUsuario, contraseña, tipoUsuario);
+                Usuario.setUsuarioActivo(usuarioOnline);
+
+                System.out.println("Usuario activo asignado: " + Usuario.getUsuarioActivo().getNombreUsuario());
 
                 JOptionPane.showMessageDialog(this, "Bienvenido, " + nombre + " (" + tipoUsuario + ")");
 

@@ -55,6 +55,29 @@ public class VehiculoDAO {
         return lista;
     }
 
+    //Buscar el carro por id para generación de .txt
+    public Vehiculo buscarCarroPorId(int id){
+        String sql = "SELECT * FROM vehiculos WHERE id_vehiculo = ?";
+        try (Connection conn = ConexionBD.conectar();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new Vehiculo(
+                        rs.getInt("id_vehiculo"),
+                        rs.getString("marca"),
+                        rs.getString("modelo"),
+                        rs.getDouble("precio"),
+                        rs.getBoolean("disponible")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al buscar vehiculo: " + e.getMessage());
+        }
+        return null;
+    }
+
 
     // Eliminar un carro
     public boolean eliminarVehiculo(int idVehiculo) {

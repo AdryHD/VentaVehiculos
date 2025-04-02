@@ -5,6 +5,8 @@ public class Usuario extends Persona {
     private String contraseña;
     private String tipoUsuario; // "admin" o "cliente"
 
+    private static Usuario usuarioActivo; //almacena al usuario que esta en la sesion
+
     // constructor
     public Usuario(String nombre, String apellido, String correo, String nombreUsuario, String contraseña, String tipoUsuario) {
         super(nombre, apellido, correo);
@@ -38,6 +40,7 @@ public class Usuario extends Persona {
         this.tipoUsuario = tipoUsuario;
     }
 
+
     // abstractos
     @Override
     public void mostrarInformacion() {
@@ -47,5 +50,13 @@ public class Usuario extends Persona {
     @Override
     public boolean autenticar(String usuario, String contraseña) {
         return this.nombreUsuario.equals(usuario) && this.contraseña.equals(contraseña);
+    }
+
+    public static void setUsuarioActivo (Usuario usuario){
+        usuarioActivo = usuario;
+    }
+
+    public static Usuario getUsuarioActivo(){
+        return usuarioActivo;
     }
 }

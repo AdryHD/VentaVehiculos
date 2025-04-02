@@ -1,4 +1,4 @@
-package ventavehiculos;
+ package ventavehiculos;
 
 import ventavehiculos.gui.VentanaLogin;
 import ventavehiculos.model.Inventario;
