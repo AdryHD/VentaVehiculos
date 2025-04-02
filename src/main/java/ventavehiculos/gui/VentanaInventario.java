@@ -87,7 +87,7 @@ public class VentanaInventario extends JFrame {
 
         try {
             double precio = Double.parseDouble(precioStr);
-            Vehiculo nuevo = new Vehiculo();
+            Vehiculo nuevo = new Vehiculo(0, marca.trim(), modelo.trim(), precio, true);
             boolean exito = new VehiculoDAO().agregarVehiculo(nuevo);
             if (exito) {
                 JOptionPane.showMessageDialog(this, "Vehículo agregado.");

@@ -8,12 +8,16 @@ public class Vehiculo {
     private boolean disponible;
 
     // Constructor
-    public Vehiculo() {
+    public Vehiculo(int id, String marca, String modelo, double precio, boolean disponible) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.precio = precio;
         this.disponible = disponible;
+    }
+
+    public Vehiculo() {
+
     }
 
     // set y get

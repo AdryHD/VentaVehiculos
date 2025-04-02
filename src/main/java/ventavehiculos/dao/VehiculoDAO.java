@@ -31,7 +31,7 @@ public class VehiculoDAO {
     // Lista carros disponibles
     public List<Vehiculo> listarVehiculosDisponibles() {
         List<Vehiculo> lista = new ArrayList<>();
-        String sql = "SELECT * FROM vehiculos WHERE disponible = true";
+        String sql = "SELECT * FROM vehiculos WHERE disponible = 1";
 
         try (Connection conn = ConexionBD.conectar();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -39,6 +39,11 @@ public class VehiculoDAO {
 
             while (rs.next()) {
                 Vehiculo v = new Vehiculo(
+                        rs.getInt("id_vehiculo"),
+                        rs.getString("marca"),
+                        rs.getString("modelo"),
+                        rs.getDouble("precio"),
+                        rs.getBoolean("disponible")
                 );
                 lista.add(v);
             }
@@ -49,6 +54,7 @@ public class VehiculoDAO {
 
         return lista;
     }
+
 
     // Eliminar un carro
     public boolean eliminarVehiculo(int idVehiculo) {
