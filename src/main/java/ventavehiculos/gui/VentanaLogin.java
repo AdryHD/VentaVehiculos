@@ -20,6 +20,13 @@ public class VentanaLogin extends JFrame {
     public VentanaLogin() {
         setTitle("Inicio de Sesión - SGV");
         setContentPane(panelPrincipal);
+        //  icono  usuario
+        ImageIcon iconoUsuario = new ImageIcon(getClass().getResource("/icons/usuario.png"));
+        lblUsuario.setIcon(iconoUsuario);
+        ImageIcon iconoContraseña = new ImageIcon(getClass().getResource("/icons/contraseña.png"));
+        lblContraseña.setIcon(iconoContraseña);
+
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400, 300);
         setLocationRelativeTo(null);

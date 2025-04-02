@@ -10,6 +10,7 @@ public class VentanaPrincipal extends JFrame {
     private JButton btnInventario;
     private JButton btnVentas;
     private JButton btnCerrarSesion;
+    private JLabel lblIconoTitulo;
 
     private String tipoUsuario;
 
@@ -18,6 +19,11 @@ public class VentanaPrincipal extends JFrame {
 
         setTitle("Menú Principal - SGV");
         setContentPane(panelPrincipal);
+
+        ImageIcon iconoTitulo = new ImageIcon(getClass().getResource("/icons/auto.png"));
+        lblIconoTitulo.setIcon(iconoTitulo);
+        lblIconoTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400, 250);
         setLocationRelativeTo(null);
