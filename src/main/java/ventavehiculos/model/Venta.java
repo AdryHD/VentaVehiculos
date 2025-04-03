@@ -16,7 +16,8 @@ public class Venta {
     private double monto;
 
     //se cambia el path de los archivos respectivamente segun quien acceda el programa
-    private static final String FACTURAS_FOLDER = "/Users/mpereira/Desktop/Facturas";
+    //cambiar la direccion en donde se guardan los txt segun
+    private static final String FACTURAS_FOLDER = "\\Users\\cerda\\OneDrive - Ministerio de Educación\\Escritorio";
 
     // Constructor
     public Venta(int idVenta, Cliente cliente, Vehiculo vehiculo, LocalDateTime fechaVenta) {

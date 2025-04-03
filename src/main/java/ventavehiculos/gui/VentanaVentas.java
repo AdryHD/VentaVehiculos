@@ -101,6 +101,8 @@ public class VentanaVentas extends JFrame {
         areaFactura.append("Fecha: " + LocalDateTime.now() + "\n" + "\n");
         areaFactura.append("===========================\n");
 
+
+        JOptionPane.showMessageDialog(this, "Venta registrada.");
         //Se busca el carro por id para obtener todos los detalles para la factura
         Vehiculo vehiculoSeleccionado = new VehiculoDAO().buscarCarroPorId(idVehiculo);
         if (vehiculoSeleccionado == null) {
