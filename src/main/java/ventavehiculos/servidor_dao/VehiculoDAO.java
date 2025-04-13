@@ -1,4 +1,4 @@
-package ventavehiculos.dao;
+package ventavehiculos.servidor_dao;
 
 import ventavehiculos.model.Vehiculo;
 

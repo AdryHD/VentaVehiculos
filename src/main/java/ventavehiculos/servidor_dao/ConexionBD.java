@@ -1,4 +1,4 @@
-package ventavehiculos.dao;
+package ventavehiculos.servidor_dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,15 +9,16 @@ public class ConexionBD {
     // Datos conex
     private static final String URL = "jdbc:mysql://localhost:3306/gestionVentas";
     private static final String USUARIO = "root";
-    private static final String CONTRASEÑA = "root";
+    private static final String CONTRASEÑA = "LancerEVO400";
 
 
     public static Connection conectar() {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexion = DriverManager.getConnection(URL, USUARIO, CONTRASEÑA);
             System.out.println("✅ Conexión exitosa a la base de datos gestionVentas.");
             return conexion;
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.err.println("❌ Error al conectar: " + e.getMessage());
             return null;
         }

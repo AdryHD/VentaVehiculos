@@ -1,6 +1,6 @@
 package ventavehiculos.gui;
 
-import ventavehiculos.dao.VehiculoDAO;
+import ventavehiculos.servidor_dao.VehiculoDAO;
 import ventavehiculos.model.Cliente;
 import ventavehiculos.model.Vehiculo;
 import ventavehiculos.model.Venta;

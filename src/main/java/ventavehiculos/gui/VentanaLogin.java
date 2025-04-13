@@ -1,10 +1,16 @@
 package ventavehiculos.gui;
 
-import ventavehiculos.dao.ConexionBD;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import ventavehiculos.servidor_dao.ConexionBD;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.sql.*;
 
 public class VentanaLogin extends JFrame {
@@ -51,17 +57,26 @@ public class VentanaLogin extends JFrame {
             return;
         }
 
-        try (Connection conn = ConexionBD.conectar()) {
-            String sql = "SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, usuario);
-            ps.setString(2, contraseña);
+        try{
+            Socket socket = new Socket("127.0.0.1", 5700);
+            DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+            DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
 
-            ResultSet rs = ps.executeQuery();
+            //Gson de solicitud
+            Gson gson = new Gson();
+            JsonObject solicitud = new JsonObject();
+            solicitud.addProperty("usuario", usuario);
+            solicitud.addProperty("contraseña", contraseña);
+            dataOutputStream.writeUTF(gson.toJson(solicitud));
 
-            if (rs.next()) {
-                String tipoUsuario = rs.getString("tipo_usuario");
-                String nombre = rs.getString("nombre");
+            String respuestaJson = dataInputStream.readUTF();
+            JsonObject respuesta = gson.fromJson(respuestaJson, JsonObject.class);
+
+            boolean loginCorrecto = respuesta.get("correcto").getAsBoolean();
+
+            if(loginCorrecto){
+                String tipoUsuario = respuesta.get("tipo_usuario").getAsString();
+                String nombre = respuesta.get("nombre").getAsString();
 
                 JOptionPane.showMessageDialog(this, " Bienvenido, " + nombre);
 
@@ -69,16 +84,16 @@ public class VentanaLogin extends JFrame {
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(tipoUsuario);
                 ventanaPrincipal.setVisible(true);
                 dispose();
-            } else {
+            }else {
                 JOptionPane.showMessageDialog(this, "❌ Usuario o contraseña incorrectos.", "Acceso Denegado", JOptionPane.ERROR_MESSAGE);
             }
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "❌ Error de conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }catch (IOException e){
+            JOptionPane.showMessageDialog(this, "❌ " +
+                    "Error al conectar con el servidor: \" + e.getMessage(), \"Error\", JOptionPane.ERROR_MESSAGE");
         }
+
     }
 
-    public static void main(String[] args) {
-        new VentanaLogin();
-    }
+
 }
