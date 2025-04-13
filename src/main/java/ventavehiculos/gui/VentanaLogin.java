@@ -70,11 +70,11 @@ public class VentanaLogin extends JFrame {
                 ventanaPrincipal.setVisible(true);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "❌Usuario o contraseña incorrectos.", "Acceso Denegado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "❌ Usuario o contraseña incorrectos.", "Acceso Denegado", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "❌Error de conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "❌ Error de conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

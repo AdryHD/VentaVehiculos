@@ -103,12 +103,12 @@ public class VentanaVentas extends JFrame {
         areaFactura.append("=============================\n");
 
 
-        JOptionPane.showMessageDialog(this, "✅Venta registrada.");
+        JOptionPane.showMessageDialog(this, "✅ Venta registrada.");
 
         //Se busca el carro por id para  todos los detalles para la factura
         Vehiculo vehiculoSeleccionado = new VehiculoDAO().buscarCarroPorId(idVehiculo);
         if (vehiculoSeleccionado == null) {
-            JOptionPane.showMessageDialog(this, "❌Error al recuperar detalles del vehiculo");
+            JOptionPane.showMessageDialog(this, "❌ Error al recuperar detalles del vehiculo");
             return;
         }
 

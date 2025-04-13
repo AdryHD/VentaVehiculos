@@ -18,6 +18,12 @@ public class VentanaInventario extends JFrame {
     private JButton btnActualizar;
     private JButton btnCerrar;
     private JScrollPane scrollTabla;
+    private JTextField txtMarca;
+    private JLabel lblMarca;
+    private JLabel lblModelo;
+    private JTextField txtModelo;
+    private JLabel lblPrecio;
+    private JTextField txtPrecio;
 
     private DefaultTableModel modeloTabla;
 
@@ -35,6 +41,7 @@ public class VentanaInventario extends JFrame {
 
         cargarVehiculos();
 
+        //ENLAZAR LOS BOTONES
         // Agregar carro
         btnAgregar.addActionListener(new ActionListener() {
             @Override
@@ -79,26 +86,37 @@ public class VentanaInventario extends JFrame {
     }
 
     private void agregarVehiculo() {
-        String marca = JOptionPane.showInputDialog(this, "Marca:");
-        String modelo = JOptionPane.showInputDialog(this, "Modelo:");
-        String precioStr = JOptionPane.showInputDialog(this, "Precio:");
+        String marca = txtMarca.getText().trim();
+        String modelo = txtModelo.getText().trim();
+        String precioStr = txtPrecio.getText().trim();
 
-        if (marca == null || modelo == null || precioStr == null) return;
+        if (marca.isEmpty() || modelo.isEmpty() || precioStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor completa todos los campos.");
+            return;
+        }
 
         try {
             double precio = Double.parseDouble(precioStr);
-            Vehiculo nuevo = new Vehiculo(0, marca.trim(), modelo.trim(), precio, true);
+            Vehiculo nuevo = new Vehiculo(0, marca, modelo, precio, true);
             boolean exito = new VehiculoDAO().agregarVehiculo(nuevo);
             if (exito) {
-                JOptionPane.showMessageDialog(this, "Vehículo agregado.");
+                JOptionPane.showMessageDialog(this, "Vehículo agregado correctamente.");
                 cargarVehiculos();
+                limpiarCamposAgregar(); // Limpia los campos después
             } else {
                 JOptionPane.showMessageDialog(this, "Error al agregar vehículo.");
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Precio inválido.");
+            JOptionPane.showMessageDialog(this, "El precio ingresado no es válido.");
         }
     }
+
+    private void limpiarCamposAgregar() {
+        txtMarca.setText("");
+        txtModelo.setText("");
+        txtPrecio.setText("");
+    }
+
 
     private void eliminarVehiculoSeleccionado() {
         int fila = tablaVehiculos.getSelectedRow();
