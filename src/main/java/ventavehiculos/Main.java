@@ -1,10 +1,11 @@
  package ventavehiculos;
 
-import ventavehiculos.gui.VentanaLogin;
+import ventavehiculos.controller.ClienteSGV;
+import ventavehiculos.view.VentanaLogin;
 import ventavehiculos.model.Inventario;
 import ventavehiculos.model.MonitoreoInventario;
 import ventavehiculos.model.Vehiculo;
-import ventavehiculos.servidor_dao.ServidorSGV;
+import ventavehiculos.controller.ServidorSGV;
 
  public class Main {
     public static void main(String[] args) {
