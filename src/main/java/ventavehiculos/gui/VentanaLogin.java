@@ -63,18 +63,18 @@ public class VentanaLogin extends JFrame {
                 String tipoUsuario = rs.getString("tipo_usuario");
                 String nombre = rs.getString("nombre");
 
-                JOptionPane.showMessageDialog(this, "Bienvenido, " + nombre + " (" + tipoUsuario + ")");
+                JOptionPane.showMessageDialog(this, " Bienvenido, " + nombre);
 
                 // Abrir la ventana principal y cerrar login
                 VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(tipoUsuario);
                 ventanaPrincipal.setVisible(true);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Acceso Denegado", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "❌Usuario o contraseña incorrectos.", "Acceso Denegado", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error de conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "❌Error de conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -15,7 +15,7 @@ public class Usuario extends Persona {
         this.tipoUsuario = tipoUsuario;
     }
 
-    // set y gat
+
     public String getNombreUsuario() {
         return nombreUsuario;
     }

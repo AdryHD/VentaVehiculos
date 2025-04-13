@@ -20,7 +20,6 @@ public class Vehiculo {
 
     }
 
-    // set y get
     public int getId() {
         return id;
     }

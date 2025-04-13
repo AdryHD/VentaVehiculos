@@ -68,7 +68,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="➡️ Nombre: "/>
+          <text value="➡ Nombre: "/>
         </properties>
       </component>
       <component id="bdd2b" class="javax.swing.JTextField" binding="txtApellido">
@@ -78,7 +78,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="➡️ Apellido: "/>
+          <text value="➡ Apellido: "/>
         </properties>
       </component>
       <component id="2ccc3" class="javax.swing.JTextField" binding="txtCorreo">

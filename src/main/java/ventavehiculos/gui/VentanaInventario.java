@@ -28,7 +28,7 @@ public class VentanaInventario extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // Configurar tabla
+        // tabla
         modeloTabla = new DefaultTableModel();
         modeloTabla.setColumnIdentifiers(new String[]{"ID", "Marca", "Modelo", "Precio", "Disponible"});
         tablaVehiculos.setModel(modeloTabla);

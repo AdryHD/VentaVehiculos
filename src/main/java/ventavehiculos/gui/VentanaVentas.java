@@ -91,22 +91,24 @@ public class VentanaVentas extends JFrame {
         double precio = (double) modeloTabla.getValueAt(fila, 3);
 
         //  factura
-        areaFactura.setText( "\n" + "======= FACTURA SGV =======\n" + "\n");
+        areaFactura.setText( "\n" + "========= FACTURA SGV =========\n" + "\n");
+        areaFactura.setText( "\n" + "============== ⏺️ ==============\n" + "\n");
         areaFactura.append( nombre + " " + apellido + "\n");
         areaFactura.append( correo + "\n");
         areaFactura.append( telefono + "\n"+ "\n");
         areaFactura.append("-------------------------------------\n"+ "\n");
-        areaFactura.append("Vehículo: " + marca + " " + modelo + "\n");
+        areaFactura.append("Vehículo: " + marca + "," + modelo + "\n");
         areaFactura.append("Precio: $" + precio + "\n");
         areaFactura.append("Fecha: " + LocalDateTime.now() + "\n" + "\n");
-        areaFactura.append("===========================\n");
+        areaFactura.append("=============================\n");
 
 
-        JOptionPane.showMessageDialog(this, "Venta registrada.");
-        //Se busca el carro por id para obtener todos los detalles para la factura
+        JOptionPane.showMessageDialog(this, "✅Venta registrada.");
+
+        //Se busca el carro por id para  todos los detalles para la factura
         Vehiculo vehiculoSeleccionado = new VehiculoDAO().buscarCarroPorId(idVehiculo);
         if (vehiculoSeleccionado == null) {
-            JOptionPane.showMessageDialog(this, "Error al recuperar detalles del vehiculo");
+            JOptionPane.showMessageDialog(this, "❌Error al recuperar detalles del vehiculo");
             return;
         }
 
@@ -118,6 +120,6 @@ public class VentanaVentas extends JFrame {
         nuevaVenta.setMonto(precio);
         nuevaVenta.generarFactura();
 
-        JOptionPane.showMessageDialog(this, "Venta registrada y factura generada.");
+        JOptionPane.showMessageDialog(this, "Factura generada.");
     }
 }

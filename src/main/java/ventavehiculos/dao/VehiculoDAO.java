@@ -8,7 +8,7 @@ import java.util.List;
 
 public class VehiculoDAO {
 
-    // Agrega un nuevo carro
+    // CREAR
     public boolean agregarVehiculo(Vehiculo vehiculo) {
         String sql = "INSERT INTO vehiculos (marca, modelo, precio, disponible) VALUES (?, ?, ?, ?)";
         try (Connection conn = ConexionBD.conectar();
@@ -28,7 +28,7 @@ public class VehiculoDAO {
         }
     }
 
-    // Lista carros disponibles
+    // LEER - LISTAR
     public List<Vehiculo> listarVehiculosDisponibles() {
         List<Vehiculo> lista = new ArrayList<>();
         String sql = "SELECT * FROM vehiculos WHERE disponible = 1";
@@ -55,7 +55,7 @@ public class VehiculoDAO {
         return lista;
     }
 
-    //Buscar el carro por id para generación de .txt
+    //LEER - Buscar el carro por id para generación de .txt
     public Vehiculo buscarCarroPorId(int id){
         String sql = "SELECT * FROM vehiculos WHERE id_vehiculo = ?";
         try (Connection conn = ConexionBD.conectar();
@@ -73,13 +73,13 @@ public class VehiculoDAO {
                 );
             }
         } catch (SQLException e) {
-            System.err.println("Error al buscar vehiculo: " + e.getMessage());
+            System.err.println("❌ Error al buscar vehiculo: " + e.getMessage());
         }
         return null;
     }
 
 
-    // Eliminar un carro
+    // ELIMINAR
     public boolean eliminarVehiculo(int idVehiculo) {
         String sql = "DELETE FROM vehiculos WHERE id_vehiculo = ?";
         try (Connection conn = ConexionBD.conectar();
@@ -93,5 +93,7 @@ public class VehiculoDAO {
             System.err.println("❌ Error al eliminar vehículo: " + e.getMessage());
             return false;
         }
+
+
     }
 }

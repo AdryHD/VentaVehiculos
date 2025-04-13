@@ -37,7 +37,7 @@ public class VentanaPrincipal extends JFrame {
 
         lblBienvenida.setText("Bienvenido al sistema SGV (" + tipoUsuario + ")");
 
-        // Acciones de botones
+        // Acciones de botones CRUD
         btnInventario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,7 +56,7 @@ public class VentanaPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose(); // cerrar esta ventana
-                new VentanaLogin(); // volver al login
+                new VentanaLogin(); // vUELTA al login
             }
         });
     }
