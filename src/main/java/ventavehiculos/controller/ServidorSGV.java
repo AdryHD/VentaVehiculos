@@ -2,6 +2,8 @@ package ventavehiculos.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import ventavehiculos.model.Inventario;
+import ventavehiculos.model.MonitoreoInventario;
 import ventavehiculos.model.dao.ConexionBD;
 
 
@@ -19,6 +21,11 @@ import java.sql.SQLException;
 public class ServidorSGV extends Thread{
 
     public void run(){
+
+        // inicia el monitoreo e inventario
+        Inventario inventario = new Inventario();
+        Thread monitorHilo = new Thread(new MonitoreoInventario(inventario));
+        monitorHilo.start();
 
         //Se establece el socket de comunicación
         ServerSocket serverSocket = null;

@@ -13,15 +13,5 @@ public class Main {
         // inicia los procesos de servidor y cliente
         new ServidorSGV().start();
         new ClienteSGV().start();
-
-        // inicia la ventana de Login con su controlador
-        VentanaLogin vistaLogin = new VentanaLogin();
-        new ControladorLogin(vistaLogin);
-        vistaLogin.setVisible(true);
-
-        // inicia el monitoreo e inventario
-        Inventario inventario = new Inventario();
-        Thread monitorHilo = new Thread(new MonitoreoInventario(inventario));
-        monitorHilo.start();
     }
 }
