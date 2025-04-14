@@ -50,6 +50,7 @@ public class ControladorVentas {
         String nombre = vista.getTxtNombre().getText().trim();
         String apellido = vista.getTxtApellido().getText().trim();
         String correo = vista.getTxtCorreo().getText().trim();
+        String cedula = vista.getTxtCedula().getText().trim();
         String telefono = vista.getTxtTelefono().getText().trim();
 
         // Validaciones
@@ -57,7 +58,7 @@ public class ControladorVentas {
             JOptionPane.showMessageDialog(vista, "Selecciona un vehículo.");
             return;
         }
-        if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || telefono.isEmpty()) {
+        if (nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || telefono.isEmpty() || cedula.isEmpty()) {
             JOptionPane.showMessageDialog(vista, "Completa todos los datos del cliente.");
             return;
         }
@@ -69,11 +70,12 @@ public class ControladorVentas {
         double precio = (double) modeloTabla.getValueAt(fila, 3);
 
         // Factura
-        vista.getAreaFactura().setText("\n========= FACTURA SGV =========\n\n");
-        vista.getAreaFactura().append("============== ⏺️ ==============\n\n");
-        vista.getAreaFactura().append(nombre + " " + apellido + "\n");
-        vista.getAreaFactura().append(correo + "\n");
-        vista.getAreaFactura().append(telefono + "\n\n");
+        vista.getAreaFactura().setText("\n" + "========= FACTURA SGV =========\n" + "\n");
+        vista.getAreaFactura().append("\n" + "============== ⏺️ ==============\n" + "\n");
+        vista.getAreaFactura().append("Nombre: " + nombre + " " + apellido + "\n");
+        vista.getAreaFactura().append("Correo electrónico: " + correo + "\n");
+        vista.getAreaFactura().append("Cédula: " + cedula + "\n");
+        vista.getAreaFactura().append("Teléfono: " + telefono + "\n\n");
         vista.getAreaFactura().append("-------------------------------------\n\n");
         vista.getAreaFactura().append("Vehículo: " + marca + ", " + modelo + "\n");
         vista.getAreaFactura().append("Precio: $" + precio + "\n");

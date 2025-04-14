@@ -2,21 +2,25 @@ package ventavehiculos.view;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.time.LocalDateTime;
-import java.util.List;
 
 public class VentanaVentas extends JFrame {
     private JPanel panelPrincipal;
     private JTable tablaVehiculos;
-    private JTextField txtNombre;
-    private JTextField txtApellido;
-    private JTextField txtCorreo;
-    private JTextField txtTelefono;
+    private JLabel NombreLbl;
+    private JTextField NombreTxt;
+    private JLabel ApellidoLbl;
+    private JTextField ApellidoTxt;
+    private JLabel CorreoLbl;
+    private JTextField CorreoTxt;
+    private JLabel CedulaLbl;
+    private JLabel TelefonoLbl;
+    private JTextField TelefonoTxt;
+    private DefaultTableModel modeloTabla;
     private JButton btnConfirmarVenta;
     private JButton btnCerrar;
     private JTextArea areaFactura;
+    private JTextField CedulaTxt;
 
-    private DefaultTableModel modeloTabla;
 
     public VentanaVentas() {
         setTitle("Registro de Ventas - SGV");
@@ -44,16 +48,17 @@ public class VentanaVentas extends JFrame {
         return tablaVehiculos;
     }
     public JTextField getTxtNombre() {
-        return txtNombre;
+        return NombreTxt;
     }
     public JTextField getTxtApellido() {
-        return txtApellido;
+        return ApellidoTxt;
     }
     public JTextField getTxtCorreo() {
-        return txtCorreo;
+        return CorreoTxt;
     }
+    public JTextField getTxtCedula(){return CedulaTxt;}
     public JTextField getTxtTelefono() {
-        return txtTelefono;
+        return TelefonoTxt;
     }
     public JButton getBtnConfirmarVenta() {
         return btnConfirmarVenta;
