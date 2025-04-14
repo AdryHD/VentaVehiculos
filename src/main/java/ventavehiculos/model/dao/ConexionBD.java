@@ -9,7 +9,7 @@ public class ConexionBD {
     // Datos conex
     private static final String URL = "jdbc:mysql://localhost:3306/gestionVentas";
     private static final String USUARIO = "root";
-    private static final String CONTRASEÑA = "LancerEVO400";
+    private static final String CONTRASEÑA = "";
 
 
     public static Connection conectar() {

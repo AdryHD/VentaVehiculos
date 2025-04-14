@@ -28,36 +28,25 @@ public class VentanaPrincipal extends JFrame {
         setSize(400, 250);
         setLocationRelativeTo(null);
         setResizable(false);
-        setVisible(true);
 
-        // Personaliza  tipo de usuario
+        // Personaliza tipo de usuario
         if (!tipoUsuario.equalsIgnoreCase("admin")) {
             btnInventario.setVisible(false);
         }
 
         lblBienvenida.setText("Bienvenido al sistema SGV (" + tipoUsuario + ")");
 
-        // Acciones de botones CRUD
-        btnInventario.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new VentanaInventario(); // abrir inventario
-            }
-        });
+    }
 
-        btnVentas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new VentanaVentas(); // abrir ventas
-            }
-        });
+    public JButton getBtnInventario() {
+        return btnInventario;
+    }
 
-        btnCerrarSesion.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose(); // cerrar esta ventana
-                new VentanaLogin(); // vUELTA al login
-            }
-        });
+    public JButton getBtnVentas() {
+        return btnVentas;
+    }
+
+    public JButton getBtnCerrarSesion() {
+        return btnCerrarSesion;
     }
 }
